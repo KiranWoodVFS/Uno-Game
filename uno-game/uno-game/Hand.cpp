@@ -1,22 +1,23 @@
+#pragma once
 #include "Hand.h"
 
-Hand::Hand(Deck* deck)
+Hand::Hand(Deck* deck) : _deck(deck)
 {
-    _deck = deck;
     for (int i = 0; i < 7; i++)
     {
-        _cards.push_back(_deck->DrawCard());
+        AddCardToHand();
     }
-    
-    _cardAmount = 7;
 }
 
 void Hand::AddCardToHand()
 {
+    _cards.push_back(_deck->DrawCard());
+    _cardAmount++;
 }
 
-void Hand::PlayCard()
+void Hand::PlayCard(int cardIndex)
 {
+    _deck->PlayCard(_cards.at(cardIndex));
 }
 
 vector<Card*> Hand::GetCards()
@@ -24,7 +25,12 @@ vector<Card*> Hand::GetCards()
     return _cards;
 }
 
-vector<Card*> Hand::GetCardAmount()
+Card* Hand::GetCard(int cardIndex)
 {
-    return vector<Card*>();
+    return _cards.at(cardIndex);
+}
+
+int Hand::GetCardAmount()
+{
+    return _cardAmount;
 }
