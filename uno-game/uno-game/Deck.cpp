@@ -13,14 +13,15 @@ void Deck::CreateDeck()
     {
         for (int j = 0; j < 4; j++)
         {
-            _currentDeck.push_back(new Card(static_cast<Color>(j), "3"));
+            _currentDeck.push_back(new Card(static_cast<Color>(j), to_string(i)));
         }
     }
+
 }
 
 void Deck::ShuffleDeck()
 {
-
+    
 }
 
 void Deck::ReShuffleDeck()
