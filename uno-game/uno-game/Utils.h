@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 
 #define string std::string
+#define vector std::vector
 
 #define LOG(X) << X
 #define LOG_LN(X) << X << std::endl
