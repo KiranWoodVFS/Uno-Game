@@ -13,7 +13,6 @@ public:
 	void ReShuffleDeck();
 
 	Card getTopOfDeck();
-	Card ();
 	
 
 private:
