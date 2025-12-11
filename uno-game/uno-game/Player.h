@@ -6,5 +6,7 @@ class Player : Entity
 {
 	// Inheritants from entity
 	// Inputs 
+
+	override void PerformTurn();
 };
 
