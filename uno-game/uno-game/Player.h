@@ -2,11 +2,12 @@
 #include "Entity.h"
 #include "RenderText.h"
 
-class Player : Entity
+class Player : public Entity
 {
 	// Inheritants from entity
 	// Inputs 
 
-	override void PerformTurn();
+public:
+
 };
 

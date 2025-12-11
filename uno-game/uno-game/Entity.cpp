@@ -4,3 +4,8 @@ void Entity::PerformTurn()
 {
 
 }
+
+const Hand& Entity::GetHand()
+{
+	return _hand;
+}
