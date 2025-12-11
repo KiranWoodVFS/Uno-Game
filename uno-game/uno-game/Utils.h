@@ -2,14 +2,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <limits>
-#include <cstdlib>
-#include <ctime>
-#include <conio.h>
+#include <algorithm>
+#include <random>
 
 #define string std::string
 #define vector std::vector
 #define to_string std::to_string
+#define shuffle std::shuffle
 
 #define BLUE_COLOUR_LOG(X, Y) std::cout << "\033[94m" X(Y) // blue
 #define RED_COLOUR_LOG(X, Y) std::cout << "\033[91m" X(Y) // red
