@@ -8,7 +8,6 @@ public:
 
 	Deck();
 
-
 	void CreateDeck();
 
 	// Shuffles deck

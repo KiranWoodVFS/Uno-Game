@@ -1,9 +1,11 @@
 #include "Hand.h"
 
-Hand::Hand()
+Hand::Hand(Deck* deck)
 {
+    _deck = deck;
     for (int i = 0; i < 7; i++)
     {
+        _cards.push_back(_deck->DrawCard());
     }
     
     _cardAmount = 7;

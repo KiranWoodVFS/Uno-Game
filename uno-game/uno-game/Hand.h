@@ -4,7 +4,7 @@
 class Hand
 {
 public:
-	Hand();
+	Hand(Deck* deck);
 
 	void AddCardToHand();
 	void PlayCard();
@@ -16,6 +16,6 @@ private:
 
 	int _cardAmount;
 	vector<Card*> _cards;
-	
+	Deck* _deck;
 };
 
