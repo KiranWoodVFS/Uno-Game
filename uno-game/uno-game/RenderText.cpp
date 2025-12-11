@@ -2,38 +2,41 @@
 
 void RenderText::PrintCards(Player& player)
 {
-	Hand cardsToPrint = player.GetHand();
+	Hand playerHand = player.GetHand();
+	vector<Card> cardsToPrint = playerHand.GetCards();
 	
 	int cardWidth = 6;
 	int cardHeight = 10;
 
+	// ---- RENDERING: FIRST LINE ------------------------------------
 	for (Card card : cardsToPrint)
 	{
 		// Prints top corner
-		YELLOW_COLOUR_LOG(LOG(), "╭");
+		COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "╭");
 		for (int i = 0; i < cardWidth; i++)
 		{
-			YELLOW_COLOUR_LOG(LOG(), "-");
+			COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "-");
 		}
-		YELLOW_COLOUR_LOG(LOG(), "╮");
+		COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "╮");
 
 		LOG_SPACE(); // Space for the next card
 	}
 	LOG_EMPTY_LN(); // Go to next line of rendering
 
+	// ---- RENDERING: MIDDLE LINES ------------------------------------
 	for (int i = 0; i < cardHeight; i++)
 	{
 		for (Card card : cardsToPrint)
 		{
 			// Prints all of the card interior
-			YELLOW_COLOUR_LOG(LOG(), "|");
+			COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "|");
 			if (i == cardHeight / 2)
 			{
 				for (int j = 0; j < cardWidth; j++)
 				{
 					if (j == cardWidth / 2)
 					{
-						YELLOW_COLOUR_LOG(LOG(), card.GetSymbol());
+						COLOR_LOG(static_cast<int>(card.GetColor()), LOG, card.GetSymbol());
 					}
 					else
 					{
@@ -48,7 +51,7 @@ void RenderText::PrintCards(Player& player)
 					LOG_SPACE();
 				}
 			}
-			YELLOW_COLOUR_LOG(LOG(), "|");
+			COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "|");
 
 			LOG_SPACE(); // Space for the next card
 		}
@@ -56,81 +59,20 @@ void RenderText::PrintCards(Player& player)
 		LOG_EMPTY_LN(); // Go to next line of rendering
 	}
 
+	// ---- RENDERING: LAST LINE ------------------------------------
 	for (Card card : cardsToPrint)
 	{
 		// Prints bottom corner
-		YELLOW_COLOUR_LOG(LOG(), "╰");
+		COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "╰");
 		for (int i = 0; i < cardWidth; i++)
 		{
-			YELLOW_COLOUR_LOG(LOG(), "-");
+			COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "-");
 		}
-		YELLOW_COLOUR_LOG(LOG(), "╯");
+		COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "╯");
 
 		LOG_SPACE(); // Space for the next card
 	}
 	// Card render finished at this point
-
-
-
-	//switch (card.GetColor())
-	//{
-	//case YELLOW:
-	//	// Prints top corner
-	//	YELLOW_COLOUR_LOG(LOG(), "╭");
-	//	for (int i = 0; i < cardWidth; i++)
-	//	{
-	//		YELLOW_COLOUR_LOG(LOG(), "-");
-	//	}
-	//	YELLOW_COLOUR_LOG(LOG(), "╮");
-
-	//	// Prints all of the card interior
-	//	for (int i = 0; i < cardHeight; i++)
-	//	{
-	//		YELLOW_COLOUR_LOG(LOG(), "|");
-	//		if (i == cardHeight / 2)
-	//		{
-	//			for (int j = 0; j < cardWidth; j++)
-	//			{
-	//				if (j == cardWidth / 2)
-	//				{
-	//					YELLOW_COLOUR_LOG(LOG(), card.GetSymbol());
-	//				}
-	//				else
-	//				{
-	//					LOG_EMPTY_LN();
-	//				}
-	//			}
-	//		}
-	//		else
-	//		{
-	//			for (int j = 0; j < cardWidth; j++)
-	//			{
-	//				LOG_EMPTY_LN();
-	//			}
-	//		}
-	//		YELLOW_COLOUR_LOG(LOG(), "|");
-	//	}
-
-	//	// Prints bottom corner
-	//	YELLOW_COLOUR_LOG(LOG(), "╰");
-	//	for (int i = 0; i < cardWidth; i++)
-	//	{
-	//		YELLOW_COLOUR_LOG(LOG(), "-");
-	//	}
-	//	YELLOW_COLOUR_LOG(LOG(), "╯");
-	//	break;
-	//case RED:
-
-	//	break;
-	//case BLUE:
-
-	//	break;
-	//case GREEN:
-
-	//	break;
-	//default:
-	//	break;
-	//}
 }
 
 void RenderText::ShowPlayerHand(Card card)
