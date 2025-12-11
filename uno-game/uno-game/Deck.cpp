@@ -16,6 +16,9 @@ Deck::Deck()
 {
     CreateDeck();
     ShuffleDeck();
+    
+    _discardPile.push_back(_currentDeck.back());
+    _currentDeck.pop_back();
 }
 
 // Creates each card to add to deck

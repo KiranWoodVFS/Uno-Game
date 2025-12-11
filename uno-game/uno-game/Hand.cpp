@@ -18,6 +18,8 @@ void Hand::AddCardToHand()
 void Hand::PlayCard(int cardIndex)
 {
     _deck->PlayCard(_cards.at(cardIndex));
+    _cards.erase(_cards.begin() + cardIndex);
+    _cardAmount--;
 }
 
 vector<Card*> Hand::GetCards()
