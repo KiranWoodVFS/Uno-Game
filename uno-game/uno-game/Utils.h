@@ -26,4 +26,4 @@
 
 //Tobias utils
 #define LOG_SPACE() std::cout << " "
-#define COLOR_LOG(CODE, X, Y) std::cout << "\033[" #CODE "m" X(Y)
+#define COLOR_LOG(CODE, X, Y) std::cout << "\033[" << (CODE) << "m" X(Y)

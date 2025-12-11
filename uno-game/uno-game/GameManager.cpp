@@ -11,15 +11,15 @@ GameManager* GameManager::GetInstance()
     return sInstance;
 }
 
-GameManager::GameManager()
-{
-}
-
-GameManager::~GameManager()
-{
-}
-
-void GameManager::Run()
-{
-
-}
+//GameManager::GameManager()
+//{
+//}
+//
+//GameManager::~GameManager()
+//{
+//}
+//
+//void GameManager::Run()
+//{
+//
+//}

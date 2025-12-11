@@ -1,23 +1,25 @@
 ﻿#include "RenderText.h"
 
-void RenderText::PrintCards(Player& player)
+void RenderText::PrintCards()
 {
-	Hand playerHand = player.GetHand();
-	vector<Card> cardsToPrint = playerHand.GetCards();
+	// For testing:
+	Deck* deck = new Deck();
+	Hand hand(deck);
+	vector<Card*> cardsToPrint = hand.GetCards();
 	
-	int cardWidth = 6;
-	int cardHeight = 10;
+	int cardWidth = 5;
+	int cardHeight = 3;
 
 	// ---- RENDERING: FIRST LINE ------------------------------------
-	for (Card card : cardsToPrint)
+	for (Card* card : cardsToPrint) //\u300C
 	{
 		// Prints top corner
-		COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "╭");
+		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "╭");
 		for (int i = 0; i < cardWidth; i++)
 		{
-			COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "-");
+			COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "-");
 		}
-		COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "╮");
+		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "╮");
 
 		LOG_SPACE(); // Space for the next card
 	}
@@ -26,17 +28,17 @@ void RenderText::PrintCards(Player& player)
 	// ---- RENDERING: MIDDLE LINES ------------------------------------
 	for (int i = 0; i < cardHeight; i++)
 	{
-		for (Card card : cardsToPrint)
+		for (Card* card : cardsToPrint)
 		{
 			// Prints all of the card interior
-			COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "|");
+			COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "|");
 			if (i == cardHeight / 2)
 			{
 				for (int j = 0; j < cardWidth; j++)
 				{
 					if (j == cardWidth / 2)
 					{
-						COLOR_LOG(static_cast<int>(card.GetColor()), LOG, card.GetSymbol());
+						COLOR_LOG(static_cast<int>(card->GetColor()), LOG, card->GetSymbol());
 					}
 					else
 					{
@@ -51,7 +53,7 @@ void RenderText::PrintCards(Player& player)
 					LOG_SPACE();
 				}
 			}
-			COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "|");
+			COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "|");
 
 			LOG_SPACE(); // Space for the next card
 		}
@@ -60,22 +62,22 @@ void RenderText::PrintCards(Player& player)
 	}
 
 	// ---- RENDERING: LAST LINE ------------------------------------
-	for (Card card : cardsToPrint)
+	for (Card* card : cardsToPrint)
 	{
 		// Prints bottom corner
-		COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "╰");
+		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "╰");
 		for (int i = 0; i < cardWidth; i++)
 		{
-			COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "-");
+			COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "-");
 		}
-		COLOR_LOG(static_cast<int>(card.GetColor()), LOG, "╯");
+		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "╯");
 
 		LOG_SPACE(); // Space for the next card
 	}
 	// Card render finished at this point
 }
 
-void RenderText::ShowPlayerHand(Card card)
-{
-
-}
+//void RenderText::ShowPlayerHand(Card card)
+//{
+//
+//}
