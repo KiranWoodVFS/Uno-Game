@@ -3,11 +3,11 @@
 
 // Colour of the card
 enum Color {
-	RED,
-	BLUE,
-	YELLOW,
+	WILD = 37,
+	RED = 91,
 	GREEN,
-	WILD
+	YELLOW,
+	BLUE,
 };
 
 
@@ -26,6 +26,5 @@ private:
 
 	Color _color;
 	string _symbol;
-
 };
 

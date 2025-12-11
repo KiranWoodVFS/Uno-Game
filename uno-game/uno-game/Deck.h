@@ -1,5 +1,6 @@
 #pragma once
 #include "Card.h"
+#include "Utils.h"
 
 class Deck
 {
@@ -8,19 +9,26 @@ public:
 	Deck();
 
 	void CreateDeck();
-	void ShuffleDeck();
 
+	// Shuffles deck
+	void ShuffleDeck();
 	void ReShuffleDeck();
 
-	Card* DrawCard();
+	// User actions
+	Card *DrawCard();
 	void PlayCard(Card* card);
-	Card* GetCurrentCard();
 
+	// Getters
+	Card* GetCurrentCard();
+	int GetCardsLeftInDeck();
+
+	// Checks if card can be played
 	bool CanPlayCard(Card* card, Color color);
 
 private:
 
 	vector<Card*> _currentDeck; // Cards player can pick from
 	vector<Card*> _discardPile; // Cards already played
+
 };
 

@@ -1,8 +1,21 @@
 #pragma once
+#include "Deck.h"
+
 class Hand
-{// Amount of cards vector
-	// Cards as a vector
-	// Place Card. Checks the card placed and whats on the discardPile
-	// Getters
+{
+public:
+	Hand(Deck* deck);
+
+	void AddCardToHand();
+	void PlayCard();
+
+	vector<Card*> GetCards();
+	vector<Card*> GetCardAmount();
+
+private:
+
+	int _cardAmount;
+	vector<Card*> _cards;
+	Deck* _deck;
 };
 
