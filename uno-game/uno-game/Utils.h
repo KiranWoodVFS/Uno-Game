@@ -2,9 +2,18 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <limits>
+#include <cstdlib>
+#include <ctime>
+#include <conio.h>
 
 #define string std::string
 #define vector std::vector
+
+#define BLUE_COLOUR_LOG(X, Y) std::cout << "\033[94m" X(Y) // blue
+#define RED_COLOUR_LOG(X, Y) std::cout << "\033[91m" X(Y) // red
+#define GREEN_COLOUR_LOG(X, Y) std::cout << "\033[92m" X(Y)  // green
+#define YELLOW_COLOUR_LOG(X, Y) std::cout << "\033[93m" X(Y)  // green
 
 #define LOG(X) << X
 #define LOG_LN(X) << X << std::endl

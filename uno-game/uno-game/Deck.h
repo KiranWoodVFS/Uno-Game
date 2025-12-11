@@ -12,12 +12,13 @@ public:
 
 	void ReShuffleDeck();
 
-	Card getTopOfDeck();
-	
+	Card* DrawCard();
+	void PlaceCard(Card* card);
+	Card* GetCurrentCard();
 
 private:
-	
-	vector<Card> _currentDeck;
-	vector<Card> _discardPile;
+
+	vector<Card*> _currentDeck; // Cards player can pick from
+	vector<Card*> _discardPile; // Cards already played
 };
 
