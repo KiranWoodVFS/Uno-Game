@@ -13,8 +13,10 @@ public:
 	void ReShuffleDeck();
 
 	Card* DrawCard();
-	void PlaceCard(Card* card);
+	void PlayCard(Card* card);
 	Card* GetCurrentCard();
+
+	bool CanPlayCard(Card* card, Color color);
 
 private:
 
