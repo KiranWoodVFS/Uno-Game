@@ -24,28 +24,28 @@ void Deck::CreateDeck()
     // Creates 2 cards for 1-9 of each color
     for (int i = 1; i < 10; i++)
     {
-        for (int j = 0; j < 4; j++)
+        for (int j = 1; j < 5; j++)
         {
-            _currentDeck.push_back(new Card(static_cast<Color>(j), to_string(i)));
-            _currentDeck.push_back(new Card(static_cast<Color>(j), to_string(i)));
+            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), to_string(i)));
+            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), to_string(i)));
         }
     }
 
     // Creates 0, skips and +2 for each color
-    for (int j = 0; j < 4; j++)
+    for (int j = 1; j < 5; j++)
     {
-        _currentDeck.push_back(new Card(static_cast<Color>(j), "0")); // Only one 0
+        _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "0")); // Only one 0
 
         // Two +2 and skip
         for (int i = 0; i < 2; i++)
         {
-            _currentDeck.push_back(new Card(static_cast<Color>(j), "skip"));
-            _currentDeck.push_back(new Card(static_cast<Color>(j), "+2"));
+            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "skip"));
+            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "+2"));
         }
     }
     
     // Adds 4 wildcards
-    for (int i = 0; i < 4; i++)
+    for (int i = 1; i < 5; i++)
     {
         _currentDeck.push_back(new Card(static_cast<Color>(WILD), ""));
     }
@@ -90,6 +90,7 @@ void Deck::PlayCard(Card* card)
     _discardPile.push_back(card);
 }
 
+// Returns if the card can be played
 bool Deck::CanPlayCard(Card* card, Color color)
 {
     Card* currentCard = GetCurrentCard();
@@ -100,17 +101,24 @@ bool Deck::CanPlayCard(Card* card, Color color)
     {
         result = true;
     }
-    if (currentCard->GetColor() == WILD && card->GetColor() == color)
+    // Checks if current card is a wildcard and if so which color was chosen
+    else if (currentCard->GetColor() == WILD && card->GetColor() == color)
     {
         return true;
     }
 
-    return false;
+    return result;
 }
 
 // Gets the last card placed in discard pile
 Card* Deck::GetCurrentCard()
 {
     return _discardPile.back();
+}
+
+// Gets the amount of cards in the current deck
+int Deck::GetCardsLeftInDeck()
+{
+    return _currentDeck.size();
 }
 

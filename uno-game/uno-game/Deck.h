@@ -8,14 +8,20 @@ public:
 	Deck();
 
 	void CreateDeck();
-	void ShuffleDeck();
 
+	// Shuffles deck
+	void ShuffleDeck();
 	void ReShuffleDeck();
 
+	// User actions
 	Card* DrawCard();
 	void PlayCard(Card* card);
-	Card* GetCurrentCard();
 
+	// Getters
+	Card* GetCurrentCard();
+	int GetCardsLeftInDeck();
+
+	// Checks if card can be played
 	bool CanPlayCard(Card* card, Color color);
 
 private:
