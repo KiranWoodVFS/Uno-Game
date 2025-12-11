@@ -1,11 +1,13 @@
 #pragma once
 #include "Card.h"
+#include "Utils.h"
 
 class Deck
 {
 public:
 
 	Deck();
+
 
 	void CreateDeck();
 
@@ -14,7 +16,7 @@ public:
 	void ReShuffleDeck();
 
 	// User actions
-	Card* DrawCard();
+	Card *DrawCard();
 	void PlayCard(Card* card);
 
 	// Getters
@@ -28,5 +30,6 @@ private:
 
 	vector<Card*> _currentDeck; // Cards player can pick from
 	vector<Card*> _discardPile; // Cards already played
+
 };
 
