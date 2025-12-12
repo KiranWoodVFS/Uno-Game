@@ -1,14 +1,22 @@
 #pragma once
+#include "Player.h"
+#include "Computer.h"
 
 class GameManager
 {
-	// Calls the functions from other classes
-	// manages if the game has been won
-
 public:
 	static GameManager* GetInstance();
-	void Run();
+	void StartGame();
+
+	void PlayGame();
+
+	void WinGame();
+	void LoseGame();
+
 private:
-	static GameManager* sInstance;
+	static GameManager* _Instance;
+	Player* _player;
+	Computer* _computer;
+	Deck* _deck;
 };
 

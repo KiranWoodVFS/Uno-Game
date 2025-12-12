@@ -1,15 +1,15 @@
 #pragma once
 #include "Entity.h"
 
-class Computer : Entity
+class Computer : public Entity
 {
 public:
 
 	Computer(Deck* deck);
 
-	void MoveAction(Color color);
+	Card* MoveAction();
 
-	void PlaceCard(int cardIndex);
+	void PickupCard();
 
 private:
 

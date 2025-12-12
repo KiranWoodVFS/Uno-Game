@@ -1,31 +1,34 @@
 #include "Computer.h"
 
+// Creates computer and makes deck
 Computer::Computer(Deck* deck)
 {
 	_deck = deck;
 	_hand = new Hand(deck);
 }
 
-void Computer::MoveAction(Color colorChosen)
+// Computer does an action. Returns the card if placed down
+Card* Computer::MoveAction()
 {
 	// Tries to put down first card possible
 	for (int i = 0; i < _hand->GetCardAmount(); i++)
 	{
-		if (CheckCard(i, colorChosen))
+		if (CheckCard(i))
 		{
-			PlaceCard(i);
-			return;
+			Card* card = _hand->GetCard(i);
+			// Plays down card
+			_hand->PlayCard(i);
+			return card;
 		}
 	}
 
-	// Takes Card
-	_hand->AddCardToHand();
+	// Picks up Card
+	PickupCard();
+	return nullptr;
 }
 
-void Computer::PlaceCard(int cardIndex)
+// Picks up a card
+void Computer::PickupCard()
 {
-	if (_hand->GetCard(cardIndex)->GetColor() == WILD)
-	{
-
-	}
+	_hand->AddCardToHand();
 }
