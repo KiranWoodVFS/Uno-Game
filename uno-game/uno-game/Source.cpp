@@ -1,6 +1,7 @@
 // Starts game manager
 #include "Utils.h"
 #include "Computer.h"
+#include "Player.h"
 
 int main()
 {
@@ -9,6 +10,7 @@ int main()
 	Computer* computer = new Computer(deck);
 
 	Card* currentCard = deck->GetCurrentCard();
-	WHITE_COLOUR_LOG(LOG_LN, currentCard->GetColor() << "  " << currentCard->GetSymbol());
 
+	Player* player = new Player(deck);
+	player->PlayerTurn();
 }

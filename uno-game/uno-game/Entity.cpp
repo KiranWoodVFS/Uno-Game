@@ -9,3 +9,12 @@ bool Entity::CheckWin()
 
 	return false;
 }
+
+bool Entity::CheckCard(int cardIndex, Color colorChosen)
+{
+	if (_deck->CanPlayCard((_hand->GetCards()).at(cardIndex), colorChosen))
+	{
+		return true;
+	}
+	return false;
+}

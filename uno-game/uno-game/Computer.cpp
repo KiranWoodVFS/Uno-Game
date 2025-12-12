@@ -8,15 +8,17 @@ Computer::Computer(Deck* deck)
 
 void Computer::MoveAction(Color colorChosen)
 {
+	// Tries to put down first card possible
 	for (int i = 0; i < _hand->GetCardAmount(); i++)
 	{
-		if (_deck->CanPlayCard((_hand->GetCards()).at(i), colorChosen))
+		if (CheckCard(i, colorChosen))
 		{
 			PlaceCard(i);
 			return;
 		}
 	}
 
+	// Takes Card
 	_hand->AddCardToHand();
 }
 

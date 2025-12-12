@@ -7,6 +7,8 @@ public:
 
 	virtual bool CheckWin();
 
+	virtual bool CheckCard(int cardIndex, Color colorChosen);
+
 protected:
 
 	Hand* _hand;
