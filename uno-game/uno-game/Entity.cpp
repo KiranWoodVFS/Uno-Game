@@ -1,11 +1,11 @@
 #include "Entity.h"
 
-void Entity::PerformTurn()
+bool Entity::CheckWin()
 {
+	if (_hand->GetCardAmount() <= 0)
+	{
+		return true;
+	}
 
-}
-
-const Hand& Entity::GetHand()
-{
-	return _hand;
+	return false;
 }

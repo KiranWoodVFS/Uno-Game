@@ -1,21 +1,28 @@
 #pragma once
 #include "Deck.h"
 
+
 class Hand
 {
 public:
+
+	// Constructor. Takes in the deck
 	Hand(Deck* deck);
 
+	// Actions for user
 	void AddCardToHand();
-	void PlayCard();
+	void PlayCard(int cardIndex);
 
+	// Getters
 	vector<Card*> GetCards();
-	vector<Card*> GetCardAmount();
+	Card* GetCard(int cardIndex);
+	int GetCardAmount();
 
 private:
 
-	int _cardAmount;
-	vector<Card*> _cards;
-	Deck* _deck;
+	Deck* _deck; // Instance of the deck
+
+	int _cardAmount; // Amount of cards in hand
+	vector<Card*> _cards; // Vector of cards
 };
 

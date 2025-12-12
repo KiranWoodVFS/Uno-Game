@@ -1,15 +1,16 @@
 #pragma once
 #include "Hand.h"
-#include "Card.h"
-#include "RenderText.h"
 
 class Entity
 {
-private:
-	Card* playedCard;
-	Hand _hand;
-public:
-	virtual void PerformTurn();
-	const Hand& GetHand();
+public: 
+
+	virtual bool CheckWin();
+
+protected:
+
+	Hand* _hand;
+	Deck* _deck;
+
 };
 

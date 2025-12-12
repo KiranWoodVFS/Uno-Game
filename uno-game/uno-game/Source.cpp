@@ -1,13 +1,25 @@
 // Starts game manager
 #include "Utils.h"
+#include "Computer.h"
 #include "RenderText.h"
-#include "windows.h"
 
 int main()
 {
-	SetConsoleOutputCP(CP_UTF8);
 	RenderText renderer;
 	renderer.ShowOpponentHand();
 	renderer.ShowPlayerHand();
-	renderer.ShowDeckTop(false);
+
+
+	// TEST BLOCK REMOVE LATER
+	Deck* deck = new Deck();
+	Hand hand(deck);
+	vector<Card*> cardsToPrint = hand.GetCards();
+
+	renderer.ShowDiscardTop(cardsToPrint[0]);
+
+	renderer.PlayerTurnRender(false, false);
+	renderer.OpponentTurnRender(false);
+
+	renderer.ShowResult(false);
+	renderer.ShowResult(true);
 }

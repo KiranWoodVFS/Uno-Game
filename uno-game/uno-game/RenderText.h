@@ -6,10 +6,11 @@ class RenderText
 {
 	// All the LOG_LN's that the text will see
 public:
-	void ShowDeckTop(bool mode);
+	void ShowDiscardTop(Card* topCard);
 	void ShowPlayerHand();
 	void ShowOpponentHand();
-	void PlayerTurnRender();
-	void OpponentTurnRender();
+	void PlayerTurnRender(bool isSecondPhase, bool picked);
+	void OpponentTurnRender(bool isSecondPhase);
+	void ShowResult(bool hasWon);
 };
 
