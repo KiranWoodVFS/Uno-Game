@@ -94,7 +94,7 @@ void Deck::PlayCard(Card* card)
 }
 
 // Returns if the card can be played
-bool Deck::CanPlayCard(Card* card, Color color)
+bool Deck::CanPlayCard(Card* card)
 {
     Card* currentCard = GetCurrentCard();
     bool result = false;
@@ -105,7 +105,7 @@ bool Deck::CanPlayCard(Card* card, Color color)
         result = true;
     }
     // Checks if current card is a wildcard and if so which color was chosen
-    else if (currentCard->GetColor() == WILD && card->GetColor() == color)
+    else if (currentCard->GetColor() == WILD && card->GetColor() == _wildColor)
     {
         return true;
     }

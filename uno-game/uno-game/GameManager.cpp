@@ -1,25 +1,56 @@
 #include "GameManager.h"
 
-GameManager* GameManager::sInstance = nullptr;
+GameManager* GameManager::_Instance = nullptr;
 
 GameManager* GameManager::GetInstance()
 {
-    if (sInstance == nullptr)
+    if (_Instance == nullptr)
     {
-        sInstance = new GameManager();
+        _Instance = new GameManager();
     }
-    return sInstance;
+    return _Instance;
 }
 
-//GameManager::GameManager()
-//{
-//}
-//
-//GameManager::~GameManager()
-//{
-//}
-//
-//void GameManager::Run()
-//{
-//
-//}
+// Creates deck, player and computer
+void GameManager::StartGame()
+{
+    _deck = new Deck();
+    _player = new Player(_deck);
+    _computer = new Computer(_deck);
+    PlayGame();
+}
+
+// Plays the game
+void GameManager::PlayGame()
+{
+    bool gameOver = false;
+
+    // Loops until someone wins game
+    do
+    {
+        _player->PlayerTurn();
+
+        // Checks if player won game
+        if (_player->CheckWin())
+        {
+            gameOver = true;
+            WinGame();
+        }
+        Card* lastPlaced = _computer->MoveAction();
+
+        // Checks if computer won game
+        if (_computer->CheckWin())
+        {
+            LoseGame();
+        }
+    } while (!gameOver);
+}
+
+void GameManager::WinGame()
+{
+}
+
+void GameManager::LoseGame()
+{
+}
+

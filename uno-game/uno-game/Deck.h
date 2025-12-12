@@ -23,11 +23,12 @@ public:
 	int GetCardsLeftInDeck();
 
 	// Checks if card can be played
-	bool CanPlayCard(Card* card, Color color);
+	bool CanPlayCard(Card* card);
 
 private:
 
 	vector<Card*> _currentDeck; // Cards player can pick from
 	vector<Card*> _discardPile; // Cards already played
+	Color wildColor = WILD;
 };
 
