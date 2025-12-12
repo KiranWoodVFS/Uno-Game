@@ -50,7 +50,7 @@ void Deck::CreateDeck()
     // Adds 4 wildcards
     for (int i = 1; i < 5; i++)
     {
-        _currentDeck.push_back(new Card(static_cast<Color>(WILD), ""));
+        _currentDeck.push_back(new Card(static_cast<Color>(WILD), "W"));
     }
 }
 
