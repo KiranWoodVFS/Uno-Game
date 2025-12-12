@@ -21,4 +21,9 @@
 #define LOG_LN(X) << X << std::endl
 #define LOG_EMPTY_LN() std::cout << std::endl
 
+
 #define WAIT_FOR_INPUT _getch()
+
+//Tobias utils
+#define LOG_SPACE() std::cout << " "
+#define COLOR_LOG(CODE, X, Y) std::cout << "\033[" << (CODE) << "m" X(Y)
