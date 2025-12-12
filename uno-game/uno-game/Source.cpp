@@ -11,5 +11,4 @@ int main()
 	Card* currentCard = deck->GetCurrentCard();
 	WHITE_COLOUR_LOG(LOG_LN, currentCard->GetColor() << "  " << currentCard->GetSymbol());
 
-	computer->MoveAction();
 }

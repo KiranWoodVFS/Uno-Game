@@ -6,12 +6,24 @@ Computer::Computer(Deck* deck)
 	_hand = new Hand(deck);
 }
 
-void Computer::MoveAction()
+void Computer::MoveAction(Color colorChosen)
 {
-	for (Card* card : _hand->GetCards())
+	for (int i = 0; i < _hand->GetCardAmount(); i++)
 	{
-		WHITE_COLOUR_LOG(LOG, (card->GetColor()) << " || " << card->GetSymbol() << " || ");
+		if (_deck->CanPlayCard((_hand->GetCards()).at(i), colorChosen))
+		{
+			PlaceCard(i);
+			return;
+		}
+	}
 
-		WHITE_COLOUR_LOG(LOG_LN, _deck->CanPlayCard(card, WILD));
+	_hand->AddCardToHand();
+}
+
+void Computer::PlaceCard(int cardIndex)
+{
+	if (_hand->GetCard(cardIndex)->GetColor() == WILD)
+	{
+
 	}
 }

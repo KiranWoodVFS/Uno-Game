@@ -7,7 +7,9 @@ public:
 
 	Computer(Deck* deck);
 
-	void MoveAction();
+	void MoveAction(Color color);
+
+	void PlaceCard(int cardIndex);
 
 private:
 
