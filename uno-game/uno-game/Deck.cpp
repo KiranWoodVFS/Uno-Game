@@ -1,5 +1,5 @@
-#pragma once
 #include "Deck.h"
+#include "Card.h"
 
 void checkCards(vector<Card*> cards)
 {
@@ -14,6 +14,8 @@ void checkCards(vector<Card*> cards)
 // Creates and shuffles the Deck
 Deck::Deck()
 {
+    _wildColor = WILD;
+
     CreateDeck();
     ShuffleDeck();
     

@@ -1,4 +1,3 @@
-#pragma once
 #include "Card.h"
 
 // Constructor, sets the card color and symbol

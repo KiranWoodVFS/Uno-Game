@@ -1,6 +1,10 @@
 #pragma once
 #include "Player.h"
-#include "Computer.h"
+
+class Player;
+class Computer;
+class Deck;
+class RenderText;
 
 class GameManager
 {
@@ -18,5 +22,6 @@ private:
 	Player* _player;
 	Computer* _computer;
 	Deck* _deck;
+	RenderText* _renderer;
 };
 

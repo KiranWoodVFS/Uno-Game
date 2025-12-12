@@ -1,7 +1,9 @@
 // Starts game manager
-#include "Utils.h"
 #include "Computer.h"
 #include "RenderText.h"
+#include "Deck.h"
+#include "Card.h"
+#include "Hand.h"
 
 int main()
 {
@@ -23,5 +25,4 @@ int main()
 	renderer.ShowResult(false);
 	renderer.ShowResult(true);
 
-	Player* player = new Player(deck);
 }

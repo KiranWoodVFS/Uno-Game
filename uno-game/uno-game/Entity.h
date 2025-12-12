@@ -1,5 +1,7 @@
 #pragma once
-#include "Hand.h"
+
+class Hand;
+class Deck;
 
 class Entity
 {
@@ -13,7 +15,5 @@ protected:
 
 	Hand* _hand;
 	Deck* _deck;
-	RenderText* _renderer;
-
 };
 

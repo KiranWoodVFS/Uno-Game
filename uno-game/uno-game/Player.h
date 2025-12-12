@@ -1,12 +1,14 @@
 #pragma once
 #include "Entity.h"
-#include "RenderText.h"
+
+class Deck;
+class RenderText;
 
 class Player : public Entity
 {
 public:
 
-	Player(Deck* deck);
+	Player(Deck* deck, RenderText* renderText);
 
 	void PlayerTurn();
 
@@ -14,6 +16,7 @@ public:
 
 private:
 
+	RenderText* _renderer;
 	// Inheritants from entity
 	// Inputs 
 };

@@ -1,7 +1,12 @@
 #include "Player.h"
+#include "RenderText.h"
+#include "Hand.h"
 
-Player::Player(Deck* deck)
+Player::Player(Deck* deck, RenderText* renderText)
 {
+	_deck = deck;
+	_renderer = renderText;
+	_hand = new Hand(_deck);
 }
 
 void Player::PlayerTurn()
@@ -15,7 +20,7 @@ void Player::PlayerTurn()
 	}
 	else // Chooses card index to play card
 	{
-		if (_deck->CanPlayCard(_hand->GetCard(input - 1), WILD)) // Checks if card can be played
+		if (_deck->CanPlayCard(_hand->GetCard(input - 1))) // Checks if card can be played
 		{
 			_hand->PlayCard(input - 1); 
 		}

@@ -1,14 +1,11 @@
 ﻿#include "RenderText.h"
+#include "Card.h"
+#include "Deck.h"
+#include "Hand.h"
 
-RenderText* RenderText::sInstance = nullptr;
 
-RenderText* RenderText::GetInstance()
+RenderText::RenderText()
 {
-	if (sInstance == nullptr)
-	{
-		sInstance = new RenderText();
-	}
-	return sInstance;
 }
 
 void RenderText::ShowPlayerHand()

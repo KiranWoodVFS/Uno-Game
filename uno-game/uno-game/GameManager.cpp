@@ -1,4 +1,8 @@
 #include "GameManager.h"
+#include "Deck.h"
+#include "Player.h"
+#include "RenderText.h"
+#include "Computer.h"
 
 GameManager* GameManager::_Instance = nullptr;
 
@@ -15,8 +19,9 @@ GameManager* GameManager::GetInstance()
 void GameManager::StartGame()
 {
     _deck = new Deck();
-    _player = new Player(_deck);
-    _computer = new Computer(_deck);
+    _renderer = new RenderText();
+    _player = new Player(_deck, _renderer);
+    _computer = new Computer(_deck, _renderer);
     PlayGame();
 }
 

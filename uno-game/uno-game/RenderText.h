@@ -1,11 +1,11 @@
 #pragma once
-#include "Player.h"
-#include "Card.h"
+
+class Card;
 
 class RenderText
 {
 public:
-	static RenderText* GetInstance();
+	RenderText();
 
 	void ShowDiscardTop(Card* topCard);
 	void ShowPlayerHand();
@@ -13,7 +13,5 @@ public:
 	void PlayerTurnRender(bool isSecondPhase);
 	void OpponentTurnRender(bool isSecondPhase);
 	void ShowResult(bool hasWon);
-private:
-	static RenderText* sInstance;
 };
 

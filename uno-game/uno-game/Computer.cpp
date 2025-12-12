@@ -1,10 +1,14 @@
 #include "Computer.h"
+#include "RenderText.h"
+#include "Hand.h"
+#include "Card.h"
 
 // Creates computer and makes deck
-Computer::Computer(Deck* deck)
+Computer::Computer(Deck* deck, RenderText* renderer)
 {
 	_deck = deck;
 	_hand = new Hand(deck);
+	_renderer = renderer;
 }
 
 // Computer does an action. Returns the card if placed down

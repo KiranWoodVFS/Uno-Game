@@ -1,6 +1,6 @@
 #pragma once
-#include "Card.h"
 #include "Utils.h"
+#include "Card.h"
 
 class Deck
 {
@@ -29,6 +29,6 @@ private:
 
 	vector<Card*> _currentDeck; // Cards player can pick from
 	vector<Card*> _discardPile; // Cards already played
-	Color wildColor = WILD;
+	Color _wildColor = WILD;
 };
 

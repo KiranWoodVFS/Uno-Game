@@ -1,4 +1,6 @@
 #include "Entity.h"
+#include "Hand.h"
+#include "Deck.h"
 
 bool Entity::CheckWin()
 {
