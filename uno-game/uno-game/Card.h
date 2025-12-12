@@ -3,11 +3,11 @@
 
 // Colour of the card
 enum Color {
-	WILD = 37,
 	RED = 91,
 	GREEN,
 	YELLOW,
 	BLUE,
+	WILD = 97,
 };
 
 

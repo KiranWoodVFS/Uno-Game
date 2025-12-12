@@ -4,13 +4,16 @@
 
 class RenderText
 {
-	// All the LOG_LN's that the text will see
 public:
+	static RenderText* GetInstance();
+
 	void ShowDiscardTop(Card* topCard);
 	void ShowPlayerHand();
 	void ShowOpponentHand();
-	void PlayerTurnRender(bool isSecondPhase, bool picked);
+	void PlayerTurnRender(bool isSecondPhase);
 	void OpponentTurnRender(bool isSecondPhase);
 	void ShowResult(bool hasWon);
+private:
+	static RenderText* sInstance;
 };
 

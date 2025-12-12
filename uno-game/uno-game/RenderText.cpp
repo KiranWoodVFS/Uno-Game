@@ -1,5 +1,16 @@
 ﻿#include "RenderText.h"
 
+RenderText* RenderText::sInstance = nullptr;
+
+RenderText* RenderText::GetInstance()
+{
+	if (sInstance == nullptr)
+	{
+		sInstance = new RenderText();
+	}
+	return sInstance;
+}
+
 void RenderText::ShowPlayerHand()
 {
 	// For testing:
@@ -317,7 +328,7 @@ void RenderText::ShowDiscardTop(Card* topCard)
 	LOG_EMPTY_LN();
 }
 
-void RenderText::PlayerTurnRender(bool secondPhase, bool picked)
+void RenderText::PlayerTurnRender(bool secondPhase)
 {
 	// TEST BLOCK REMOVE LATER
 	Deck* deck = new Deck();
@@ -326,40 +337,20 @@ void RenderText::PlayerTurnRender(bool secondPhase, bool picked)
 	
 	if (!secondPhase)
 	{
-		if (!picked)
-		{
-			LOG_EMPTY_LN();
-			GREEN_COLOUR_LOG(LOG_LN, "             <=========== PLAYER'S TURN ==========>             ");
-			LOG_EMPTY_LN();
+		LOG_EMPTY_LN();
+		GREEN_COLOUR_LOG(LOG_LN, "             <=========== PLAYER'S TURN ==========>             ");
+		LOG_EMPTY_LN();
 
-			WHITE_COLOUR_LOG(LOG_LN, "Opponent hand: ");
-			ShowOpponentHand();
-			ShowDiscardTop(cardsToPrint[0]);
-			LOG_EMPTY_LN();
-			WHITE_COLOUR_LOG(LOG_LN, "Your hand: ");
-			ShowPlayerHand();
-			LOG_EMPTY_LN();
-			LOG_EMPTY_LN();
-			LOG_EMPTY_LN();
-			WHITE_COLOUR_LOG(LOG_LN, "Type the card number to play    or    type '0' to pick a card: ");
-		}
-		else
-		{
-			LOG_EMPTY_LN();
-			GREEN_COLOUR_LOG(LOG_LN, "             <=========== PLAYER'S TURN ==========>             ");
-			LOG_EMPTY_LN();
-
-			WHITE_COLOUR_LOG(LOG_LN, "Opponent hand: ");
-			ShowOpponentHand();
-			ShowDiscardTop(cardsToPrint[0]);
-			LOG_EMPTY_LN();
-			WHITE_COLOUR_LOG(LOG_LN, "Your hand: ");
-			ShowPlayerHand();
-			LOG_EMPTY_LN();
-			LOG_EMPTY_LN();
-			LOG_EMPTY_LN();
-			WHITE_COLOUR_LOG(LOG_LN, "Type the card number to play    or    type 'y' to continue: ");
-		}
+		WHITE_COLOUR_LOG(LOG_LN, "Opponent hand: ");
+		ShowOpponentHand();
+		ShowDiscardTop(cardsToPrint[0]);
+		LOG_EMPTY_LN();
+		WHITE_COLOUR_LOG(LOG_LN, "Your hand: ");
+		ShowPlayerHand();
+		LOG_EMPTY_LN();
+		LOG_EMPTY_LN();
+		LOG_EMPTY_LN();
+		WHITE_COLOUR_LOG(LOG_LN, "Type the card number to play    or    type '0' to pick a card:");
 	}
 	else
 	{

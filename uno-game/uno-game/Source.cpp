@@ -17,9 +17,11 @@ int main()
 
 	renderer.ShowDiscardTop(cardsToPrint[0]);
 
-	renderer.PlayerTurnRender(false, false);
+	renderer.PlayerTurnRender(false);
 	renderer.OpponentTurnRender(false);
 
 	renderer.ShowResult(false);
 	renderer.ShowResult(true);
+
+	Player* player = new Player(deck);
 }
