@@ -39,8 +39,8 @@ void Deck::CreateDeck()
         // Two +2 and skip
         for (int i = 0; i < 2; i++)
         {
-            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "s"));
-            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "+"));
+            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "x"));
+            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "+2"));
         }
     }
     

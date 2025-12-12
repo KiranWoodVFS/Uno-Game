@@ -7,5 +7,7 @@ int main()
 {
 	SetConsoleOutputCP(CP_UTF8);
 	RenderText renderer;
-	renderer.PrintCards();
+	renderer.ShowOpponentHand();
+	renderer.ShowPlayerHand();
+	renderer.ShowDeckTop(false);
 }

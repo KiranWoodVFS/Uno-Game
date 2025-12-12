@@ -3,7 +3,7 @@
 Hand::Hand(Deck* deck)
 {
     _deck = deck;
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < 18; i++)
     {
         _cards.push_back(_deck->DrawCard());
     }
