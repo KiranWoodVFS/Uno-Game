@@ -4,8 +4,10 @@
 
 int main()
 {
-	// Creates and starts game
+	// Changes console output
 	SetConsoleOutputCP(CP_UTF8);
+
+	// Creates and starts game
 	GameManager* gameManager = new GameManager();
 	gameManager->StartGame();
 

@@ -426,6 +426,7 @@ void RenderText::OpponentTurnRender(bool secondPhase, vector<Card*> computerHand
 
 void RenderText::ShowResult(bool hasWon)
 {
+	CLEAR_CONSOLE;
 	if (hasWon)
 	{
 		LOG_EMPTY_LN();

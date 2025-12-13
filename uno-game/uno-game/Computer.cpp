@@ -52,10 +52,6 @@ void Computer::ChooseWildColor()
 			return;
 		}
 	}
-	
-	//!!!!! CHANGE TO LET USER KNOW WHICH COLOUR COMPUTER PICKED
-	BLUE_COLOUR_LOG(LOG_LN, BLUE);
-	WAIT_FOR_INPUT;
 
 	// If there is no avaliable color picks blue
 	_deck->SetWildColor(BLUE);

@@ -10,8 +10,12 @@ Deck::Deck()
     ShuffleDeck();
     
     // Sets up first card to play
-    _discardPile.push_back(_currentDeck.back());
-    _currentDeck.pop_back();
+    Card* currentCard;
+    do // Loops until it isn't a wild card
+    {
+        _discardPile.push_back(_currentDeck.back());
+        _currentDeck.pop_back();
+    } while (GetCurrentCard()->GetColor() == WILD);
 }
 
 // Creates each card to add to deck
@@ -131,6 +135,7 @@ void Deck::SetWildColor(Color color)
 {
     _wildColor = color;
 
+    // Lets user know which colour was picked
     switch (color)
     {
     case RED:
