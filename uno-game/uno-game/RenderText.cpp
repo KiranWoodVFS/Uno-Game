@@ -8,6 +8,40 @@ RenderText::RenderText()
 {
 }
 
+void RenderText::WelcomeRender()
+{
+	LOG_EMPTY_LN();
+	GREEN_COLOUR_LOG(LOG, "W");
+	RED_COLOUR_LOG(LOG, "E");
+	BLUE_COLOUR_LOG(LOG, "L");
+	YELLOW_COLOUR_LOG(LOG, "C");
+	GREEN_COLOUR_LOG(LOG, "O");
+	RED_COLOUR_LOG(LOG, "M");
+	BLUE_COLOUR_LOG(LOG, "E");
+	LOG_SPACE();
+	YELLOW_COLOUR_LOG(LOG, "T");
+	GREEN_COLOUR_LOG(LOG, "O");
+	LOG_SPACE();
+	RED_COLOUR_LOG(LOG, "D");
+	BLUE_COLOUR_LOG(LOG, "I");
+	YELLOW_COLOUR_LOG(LOG, "G");
+	GREEN_COLOUR_LOG(LOG, "I");
+	RED_COLOUR_LOG(LOG, "T");
+	BLUE_COLOUR_LOG(LOG, "A");
+	YELLOW_COLOUR_LOG(LOG, "L");
+	LOG_SPACE();
+	WHITE_COLOUR_LOG(LOG, "==");
+	WHITE_COLOUR_LOG(LOG, "U");
+	WHITE_COLOUR_LOG(LOG, "N");
+	WHITE_COLOUR_LOG(LOG, "O");
+	WHITE_COLOUR_LOG(LOG, "==");
+	LOG_EMPTY_LN();
+	WHITE_COLOUR_LOG(LOG_LN, "By Kiran Wood and Tobias Arrieta");
+	LOG_EMPTY_LN();
+	WHITE_COLOUR_LOG(LOG_LN, "Are you ready?");
+	GRAY_COLOUR_LOG(LOG_LN, "[Press any key]");
+}
+
 void RenderText::ShowPlayerHand(vector<Card*> playerHand)
 {
 	vector<Card*> cardsToPrint = playerHand;
@@ -19,12 +53,12 @@ void RenderText::ShowPlayerHand(vector<Card*> playerHand)
 	for (Card* card : cardsToPrint)
 	{
 		// Prints top corner
-		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "╭");
+		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, u8"┌");
 		for (int i = 0; i < cardWidth; i++)
 		{
 			COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "-");
 		}
-		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "╮");
+		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, u8"┐");
 
 		LOG_SPACE(); // Space for the next card
 	}
@@ -86,12 +120,12 @@ void RenderText::ShowPlayerHand(vector<Card*> playerHand)
 	for (Card* card : cardsToPrint)
 	{
 		// Prints bottom corner
-		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "╰");
+		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, u8"└");
 		for (int i = 0; i < cardWidth; i++)
 		{
 			COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "-");
 		}
-		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, "╯");
+		COLOR_LOG(static_cast<int>(card->GetColor()), LOG, u8"┘");
 
 		LOG_SPACE(); // Space for the next card
 	}
@@ -151,12 +185,12 @@ void RenderText::ShowOpponentHand(vector<Card*> computerHand)
 	for (Card* card : cardsToPrint)
 	{
 		// Prints top corner
-		COLOR_LOG(static_cast<int>(37), LOG, "╭");
+		COLOR_LOG(static_cast<int>(37), LOG, u8"┌");
 		for (int i = 0; i < cardWidth; i++)
 		{
 			COLOR_LOG(static_cast<int>(37), LOG, "-");
 		}
-		COLOR_LOG(static_cast<int>(37), LOG, "╮");
+		COLOR_LOG(static_cast<int>(37), LOG, u8"┐");
 
 		LOG_SPACE(); // Space for the next card
 	}
@@ -185,12 +219,12 @@ void RenderText::ShowOpponentHand(vector<Card*> computerHand)
 	for (Card* card : cardsToPrint)
 	{
 		// Prints bottom corner
-		COLOR_LOG(static_cast<int>(37), LOG, "╰");
+		COLOR_LOG(static_cast<int>(37), LOG, u8"└");
 		for (int i = 0; i < cardWidth; i++)
 		{
 			COLOR_LOG(static_cast<int>(37), LOG, "-");
 		}
-		COLOR_LOG(static_cast<int>(37), LOG, "╯");
+		COLOR_LOG(static_cast<int>(37), LOG, u8"┘");
 
 		LOG_SPACE(); // Space for the next card
 	}
@@ -204,19 +238,19 @@ void RenderText::ShowDiscardTop(Card* topCard)
 	
 	LOG_EMPTY_LN();
 	// Prints top corner
-	COLOR_LOG(static_cast<int>(topCard->GetColor()), LOG, "╭");
+	COLOR_LOG(static_cast<int>(topCard->GetColor()), LOG, u8"┌");
 	for (int i = 0; i < cardWidth; i++)
 	{
 		COLOR_LOG(static_cast<int>(topCard->GetColor()), LOG, "-");
 	}
-	COLOR_LOG(static_cast<int>(topCard->GetColor()), LOG, "╮");
+	COLOR_LOG(static_cast<int>(topCard->GetColor()), LOG, u8"┐");
 	LOG_SPACE();
-	COLOR_LOG(static_cast<int>(37), LOG, "╭");
+	COLOR_LOG(static_cast<int>(37), LOG, u8"┌");
 	for (int i = 0; i < cardWidth; i++)
 	{
 		COLOR_LOG(static_cast<int>(37), LOG, "-");
 	}
-	COLOR_LOG(static_cast<int>(37), LOG, "╮");
+	COLOR_LOG(static_cast<int>(37), LOG, u8"┐");
 
 
 	LOG_EMPTY_LN(); // Go to next line of rendering
@@ -276,21 +310,21 @@ void RenderText::ShowDiscardTop(Card* topCard)
 	}
 
 	// Prints bottom corner
-	COLOR_LOG(static_cast<int>(topCard->GetColor()), LOG, "╰");
+	COLOR_LOG(static_cast<int>(topCard->GetColor()), LOG, u8"└");
 	for (int i = 0; i < cardWidth; i++)
 	{
 		COLOR_LOG(static_cast<int>(topCard->GetColor()), LOG, "-");
 	}
-	COLOR_LOG(static_cast<int>(topCard->GetColor()), LOG, "╯");
+	COLOR_LOG(static_cast<int>(topCard->GetColor()), LOG, u8"┘");
 
 	LOG_SPACE();
 
-	COLOR_LOG(static_cast<int>(37), LOG, "╰");
+	COLOR_LOG(static_cast<int>(37), LOG, u8"└");
 	for (int i = 0; i < cardWidth; i++)
 	{
 		COLOR_LOG(static_cast<int>(37), LOG, "-");
 	}
-	COLOR_LOG(static_cast<int>(37), LOG, "╯");
+	COLOR_LOG(static_cast<int>(37), LOG, u8"┘");
 
 	LOG_EMPTY_LN();
 
@@ -337,7 +371,7 @@ void RenderText::PlayerTurnRender(bool secondPhase, vector<Card*> playerHand, ve
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
-		WHITE_COLOUR_LOG(LOG_LN, "Type the card number to play    or    type '0' to pick a card:");
+		WHITE_COLOUR_LOG(LOG_LN, "Type the card number to play, or type '0' to pick a card:");
 	}
 	else
 	{
@@ -354,7 +388,8 @@ void RenderText::PlayerTurnRender(bool secondPhase, vector<Card*> playerHand, ve
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
-		WHITE_COLOUR_LOG(LOG_LN, "Type 'y' to continue: ");
+		WHITE_COLOUR_LOG(LOG_LN, "Your turn ended.");
+		GRAY_COLOUR_LOG(LOG_LN, "[Press any key]");
 	}
 }
 
@@ -371,7 +406,8 @@ void RenderText::OpponentTurnRender(bool secondPhase, vector<Card*> computerHand
 		ShowDiscardTop(deck->GetCurrentCard());
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
-		WHITE_COLOUR_LOG(LOG_LN, "The opponent is playing . . .");
+		WHITE_COLOUR_LOG(LOG_LN, "The opponent is playing . . . ");
+		GRAY_COLOUR_LOG(LOG_LN, "[Press any key]");
 	}
 	else
 	{
@@ -384,12 +420,12 @@ void RenderText::OpponentTurnRender(bool secondPhase, vector<Card*> computerHand
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
 		WHITE_COLOUR_LOG(LOG_LN, "The opponent finished their turn.");
+		GRAY_COLOUR_LOG(LOG_LN, "[Press any key]");
 	}
 }
 
 void RenderText::ShowResult(bool hasWon)
 {
-	CLEAR_CONSOLE;
 	if (hasWon)
 	{
 		LOG_EMPTY_LN();

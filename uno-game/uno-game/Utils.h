@@ -12,7 +12,12 @@
 #define to_string std::to_string
 #define shuffle std::shuffle
 
+#define RED_COLOUR_LOG(X, Y) std::cout << "\033[91m" X(Y) // red
+#define GREEN_COLOUR_LOG(X, Y) std::cout << "\033[92m" X(Y)  // green
+#define YELLOW_COLOUR_LOG(X, Y) std::cout << "\033[93m" X(Y)  // yellow
 #define BLUE_COLOUR_LOG(X, Y) std::cout << "\033[94m" X(Y) // blue
+#define GRAY_COLOUR_LOG(X, Y) std::cout << "\033[37m" X(Y)  // gray
+#define WHITE_COLOUR_LOG(X, Y) std::cout << "\033[97m" X(Y)  // white
 
 #define LOG(X) << X
 #define LOG_LN(X) << X << std::endl

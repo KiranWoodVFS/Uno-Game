@@ -9,11 +9,9 @@ Player::Player(Deck* deck, RenderText* renderText)
 	_renderer = renderText;
 	_hand = new Hand(_deck);
 }
-
-// 
+ 
 Card* Player::PlayerTurn()
 {
-	//_renderer->PlayerTurnRender(false); // hasn't played, hasn't picked
 	int input = Input(_hand->GetCardAmount());
 
 	if (input == 0) // Picks up card
@@ -31,6 +29,8 @@ Card* Player::PlayerTurn()
 		}
 		else // Player needs to redo turn. Card cannot be played
 		{
+			RED_COLOUR_LOG(LOG_LN, "Can't play that!");
+			WHITE_COLOUR_LOG(LOG, "");
 			PlayerTurn();
 			return nullptr;
 		}
@@ -46,6 +46,16 @@ void Player::PickupCard()
 // Lets player pick a wild card
 void Player::ChooseWildColor()
 {
+	WHITE_COLOUR_LOG(LOG, "WILDCARD PLAYED: Select a color to switch:\nType '0' for ");
+	RED_COLOUR_LOG(LOG, "RED\n");
+	WHITE_COLOUR_LOG(LOG, "Type '1' for ");
+	GREEN_COLOUR_LOG(LOG, "GREEN\n");
+	WHITE_COLOUR_LOG(LOG, "Type '2' for ");
+	YELLOW_COLOUR_LOG(LOG, "YELLOW\n");
+	WHITE_COLOUR_LOG(LOG, "Type '3' for ");
+	BLUE_COLOUR_LOG(LOG, "BLUE\n");
+	WHITE_COLOUR_LOG(LOG, "");
+
 	int color = Input(3);
 
 	_deck->SetWildColor(static_cast<Color>(color + 91));
@@ -71,7 +81,8 @@ int Player::Input(int maxInputRange)
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		// Wrong Input
-		BLUE_COLOUR_LOG(LOG_LN, "you failed >:(");
+		RED_COLOUR_LOG(LOG_LN, "Invalid card!");
+		WHITE_COLOUR_LOG(LOG, "");
 	} while (true);
 	
 	return input;

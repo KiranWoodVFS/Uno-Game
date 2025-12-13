@@ -1,4 +1,4 @@
-#include "GameManager.h"
+﻿#include "GameManager.h"
 #include "Deck.h"
 #include "Player.h"
 #include "RenderText.h"
@@ -35,6 +35,8 @@ void GameManager::PlayGame()
     bool skipTurn = false;
     bool gameOver = false;
 
+    _renderer->WelcomeRender();
+    WAIT_FOR_INPUT;
     // Loops until someone wins game
     do
     {
@@ -59,7 +61,7 @@ void GameManager::PlayGame()
         // Checks for special moves
         if (lastPlaced)
         {
-            if (lastPlaced->GetSymbol() == "S") // Skips
+            if (lastPlaced->GetSymbol() == u8"⊘") // Skips
             {
                 skipTurn = true;
             }

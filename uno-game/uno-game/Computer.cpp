@@ -49,10 +49,6 @@ void Computer::ChooseWildColor()
 			// Sets wild card color
 			_deck->SetWildColor(card->GetColor());
 
-			//!!!!! CHANGE TO LET USER KNOW WHICH COLOUR COMPUTER PICKED
-			BLUE_COLOUR_LOG(LOG_LN, card->GetColor());
-			WAIT_FOR_INPUT;
-
 			return;
 		}
 	}

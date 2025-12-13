@@ -1,4 +1,4 @@
-#include "Deck.h"
+﻿#include "Deck.h"
 
 // Creates and shuffles the Deck
 Deck::Deck()
@@ -35,7 +35,7 @@ void Deck::CreateDeck()
         // Two +2 and skip
         for (int i = 0; i < 2; i++)
         {
-            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "S"));
+            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), u8"⊘"));
             _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "+2"));
         }
     }
@@ -130,5 +130,35 @@ int Deck::GetCardsLeftInDeck()
 void Deck::SetWildColor(Color color)
 {
     _wildColor = color;
+
+    switch (color)
+    {
+    case RED:
+        WHITE_COLOUR_LOG(LOG, "Wildcard color was set to ");
+        RED_COLOUR_LOG(LOG, "RED\n");
+        GRAY_COLOUR_LOG(LOG_LN, "[Press any key]");
+        WAIT_FOR_INPUT;
+        break;
+    case GREEN:
+        WHITE_COLOUR_LOG(LOG, "Wildcard color was set to ");
+        GREEN_COLOUR_LOG(LOG, "GREEN\n");
+        GRAY_COLOUR_LOG(LOG_LN, "[Press any key]");
+        WAIT_FOR_INPUT;
+        break;
+    case YELLOW:
+        WHITE_COLOUR_LOG(LOG, "Wildcard color was set to ");
+        YELLOW_COLOUR_LOG(LOG, "YELLOW\n");
+        GRAY_COLOUR_LOG(LOG_LN, "[Press any key]");
+        WAIT_FOR_INPUT;
+        break;
+    case BLUE:
+        WHITE_COLOUR_LOG(LOG, "Wildcard color was set to ");
+        BLUE_COLOUR_LOG(LOG, "BLUE\n");
+        GRAY_COLOUR_LOG(LOG_LN, "[Press any key]");
+        WAIT_FOR_INPUT;
+        break;
+    default:
+        break;
+    }
 }
 

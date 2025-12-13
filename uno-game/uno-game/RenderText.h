@@ -9,6 +9,7 @@ class RenderText
 public:
 	RenderText();
 
+	void WelcomeRender();
 	void ShowDiscardTop(Card* topCard);
 	void ShowPlayerHand(vector<Card*> playerHand);
 	void ShowOpponentHand(vector<Card*> computerHand);
