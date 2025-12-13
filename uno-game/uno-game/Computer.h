@@ -11,9 +11,12 @@ public:
 
 	Computer(Deck* deck, RenderText* renderer);
 
+	// Computer moves
 	Card* MoveAction();
 
+	// Special Actions
 	void PickupCard();
+	void ChooseWildColor();
 
 private:
 

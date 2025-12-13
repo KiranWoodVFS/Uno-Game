@@ -20,3 +20,10 @@ bool Entity::CheckCard(int cardIndex)
 	}
 	return false;
 }
+
+vector<Card*> Entity::GetCardsInHand()
+{
+	
+	return vector<Card*>(_hand->GetCards());
+}
+

@@ -36,3 +36,33 @@ void Computer::PickupCard()
 {
 	_hand->AddCardToHand();
 }
+
+// Chooses wild card
+void Computer::ChooseWildColor()
+{
+	// Goes through card to check for colour
+	for (Card* card : _hand->GetCards())
+	{
+		// Checks if card is not a wild card
+		if (card->GetColor() != WILD)
+		{
+			// Sets wild card color
+			_deck->SetWildColor(card->GetColor());
+
+			//!!!!! CHANGE TO LET USER KNOW WHICH COLOUR COMPUTER PICKED
+			BLUE_COLOUR_LOG(LOG_LN, card->GetColor());
+			WAIT_FOR_INPUT;
+
+			return;
+		}
+	}
+	
+	//!!!!! CHANGE TO LET USER KNOW WHICH COLOUR COMPUTER PICKED
+	BLUE_COLOUR_LOG(LOG_LN, BLUE);
+	WAIT_FOR_INPUT;
+
+	// If there is no avaliable color picks blue
+	_deck->SetWildColor(BLUE);
+}
+
+

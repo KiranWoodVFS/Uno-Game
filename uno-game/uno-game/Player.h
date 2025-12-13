@@ -3,6 +3,7 @@
 
 class Deck;
 class RenderText;
+class Card;
 
 class Player : public Entity
 {
@@ -10,14 +11,17 @@ public:
 
 	Player(Deck* deck, RenderText* renderText);
 
-	void PlayerTurn();
+	Card* PlayerTurn();
 
-	int InputAskCard();
+	// Special Actions
+	void PickupCard();
+	void ChooseWildColor();
+
+	// Asks for input from player
+	int Input(int maxInput);
 
 private:
 
 	RenderText* _renderer;
-	// Inheritants from entity
-	// Inputs 
 };
 

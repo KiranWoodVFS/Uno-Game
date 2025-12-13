@@ -1,24 +1,15 @@
 #include "Deck.h"
-#include "Card.h"
-
-void checkCards(vector<Card*> cards)
-{
-    for (Card* card : cards)
-    {
-        WHITE_COLOUR_LOG(LOG, card->GetColor() << " " << card->GetSymbol() << " || ");
-    }
-    LOG_EMPTY_LN();
-    BLUE_COLOUR_LOG(LOG_LN, "======================");
-}
 
 // Creates and shuffles the Deck
 Deck::Deck()
 {
+    // Default Wildcard color
     _wildColor = WILD;
 
     CreateDeck();
     ShuffleDeck();
     
+    // Sets up first card to play
     _discardPile.push_back(_currentDeck.back());
     _currentDeck.pop_back();
 }
@@ -44,7 +35,7 @@ void Deck::CreateDeck()
         // Two +2 and skip
         for (int i = 0; i < 2; i++)
         {
-            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "s"));
+            _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "S"));
             _currentDeck.push_back(new Card(static_cast<Color>(j + 90), "+2"));
         }
     }
@@ -86,6 +77,12 @@ Card* Deck::DrawCard()
     Card* card = _currentDeck.back();
     _currentDeck.pop_back(); // Removes card
 
+    // Reshuffles deck
+    if (_currentDeck.size() <= 0)
+    {
+        ReShuffleDeck();
+    }
+
     return card;
 }
 
@@ -93,6 +90,8 @@ Card* Deck::DrawCard()
 void Deck::PlayCard(Card* card)
 {
     _discardPile.push_back(card);
+    // Sets wildcard back to default
+    _wildColor = WILD;
 }
 
 // Returns if the card can be played
@@ -102,7 +101,7 @@ bool Deck::CanPlayCard(Card* card)
     bool result = false;
 
     // Checks if color or symbol is the same. Or if the card is a wild card
-    if (card->GetColor() == currentCard->GetColor() || card->GetSymbol() == currentCard->GetSymbol())
+    if (card->GetColor() == currentCard->GetColor() || card->GetSymbol() == currentCard->GetSymbol() || card->GetColor() == WILD)
     {
         result = true;
     }
@@ -125,5 +124,11 @@ Card* Deck::GetCurrentCard()
 int Deck::GetCardsLeftInDeck()
 {
     return _currentDeck.size();
+}
+
+// Sets the wild card color
+void Deck::SetWildColor(Color color)
+{
+    _wildColor = color;
 }
 

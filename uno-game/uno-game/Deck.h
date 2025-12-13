@@ -18,12 +18,15 @@ public:
 	Card* DrawCard();
 	void PlayCard(Card* card);
 
+	// Checks if card can be played
+	bool CanPlayCard(Card* card);
+
 	// Getters
 	Card* GetCurrentCard();
 	int GetCardsLeftInDeck();
 
-	// Checks if card can be played
-	bool CanPlayCard(Card* card);
+	// Sets the wildcard color
+	void SetWildColor(Color color);
 
 private:
 

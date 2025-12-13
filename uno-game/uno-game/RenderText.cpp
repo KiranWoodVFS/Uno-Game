@@ -8,12 +8,9 @@ RenderText::RenderText()
 {
 }
 
-void RenderText::ShowPlayerHand()
+void RenderText::ShowPlayerHand(vector<Card*> playerHand)
 {
-	// For testing:
-	Deck* deck = new Deck();
-	Hand hand(deck);
-	vector<Card*> cardsToPrint = hand.GetCards();
+	vector<Card*> cardsToPrint = playerHand;
 	
 	int cardWidth = 5;
 	int cardHeight = 3;
@@ -143,12 +140,9 @@ void RenderText::ShowPlayerHand()
 	// Card render finished at this point
 }
 
-void RenderText::ShowOpponentHand()
+void RenderText::ShowOpponentHand(vector<Card*> computerHand)
 {
-	// For testing:
-	Deck* deck = new Deck();
-	Hand hand(deck);
-	vector<Card*> cardsToPrint = hand.GetCards();
+	vector<Card*> cardsToPrint = computerHand;
 
 	int cardWidth = 5;
 	int cardHeight = 3;
@@ -325,13 +319,9 @@ void RenderText::ShowDiscardTop(Card* topCard)
 	LOG_EMPTY_LN();
 }
 
-void RenderText::PlayerTurnRender(bool secondPhase)
+void RenderText::PlayerTurnRender(bool secondPhase, vector<Card*> playerHand, vector<Card*> computerHand, Deck* deck)
 {
-	// TEST BLOCK REMOVE LATER
-	Deck* deck = new Deck();
-	Hand hand(deck);
-	vector<Card*> cardsToPrint = hand.GetCards();
-	
+	CLEAR_CONSOLE;
 	if (!secondPhase)
 	{
 		LOG_EMPTY_LN();
@@ -339,11 +329,11 @@ void RenderText::PlayerTurnRender(bool secondPhase)
 		LOG_EMPTY_LN();
 
 		WHITE_COLOUR_LOG(LOG_LN, "Opponent hand: ");
-		ShowOpponentHand();
-		ShowDiscardTop(cardsToPrint[0]);
+		ShowOpponentHand(computerHand);
+		ShowDiscardTop(deck->GetCurrentCard());
 		LOG_EMPTY_LN();
 		WHITE_COLOUR_LOG(LOG_LN, "Your hand: ");
-		ShowPlayerHand();
+		ShowPlayerHand(playerHand);
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
@@ -356,11 +346,11 @@ void RenderText::PlayerTurnRender(bool secondPhase)
 		LOG_EMPTY_LN();
 
 		WHITE_COLOUR_LOG(LOG_LN, "Opponent hand: ");
-		ShowOpponentHand();
-		ShowDiscardTop(cardsToPrint[0]);
+		ShowOpponentHand(computerHand);
+		ShowDiscardTop(deck->GetCurrentCard());
 		LOG_EMPTY_LN();
 		WHITE_COLOUR_LOG(LOG_LN, "Your hand: ");
-		ShowPlayerHand();
+		ShowPlayerHand(playerHand);
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
@@ -368,21 +358,17 @@ void RenderText::PlayerTurnRender(bool secondPhase)
 	}
 }
 
-void RenderText::OpponentTurnRender(bool secondPhase)
+void RenderText::OpponentTurnRender(bool secondPhase, vector<Card*> computerHand, Deck* deck)
 {
-	// TEST BLOCK REMOVE LATER
-	Deck* deck = new Deck();
-	Hand hand(deck);
-	vector<Card*> cardsToPrint = hand.GetCards();
-	
+	CLEAR_CONSOLE;
 	if (!secondPhase)
 	{
 		LOG_EMPTY_LN();
 		RED_COLOUR_LOG(LOG_LN, "             <=========== OPPONENT'S TURN ==========>             ");
 		LOG_EMPTY_LN();
 		WHITE_COLOUR_LOG(LOG_LN, "Opponent hand: ");
-		ShowOpponentHand();
-		ShowDiscardTop(cardsToPrint[0]);
+		ShowOpponentHand(computerHand);
+		ShowDiscardTop(deck->GetCurrentCard());
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
 		WHITE_COLOUR_LOG(LOG_LN, "The opponent is playing . . .");
@@ -393,8 +379,8 @@ void RenderText::OpponentTurnRender(bool secondPhase)
 		RED_COLOUR_LOG(LOG_LN, "             <=========== OPPONENT'S TURN ==========>             ");
 		LOG_EMPTY_LN();
 		WHITE_COLOUR_LOG(LOG_LN, "Opponent hand: ");
-		ShowOpponentHand();
-		ShowDiscardTop(cardsToPrint[0]);
+		ShowOpponentHand(computerHand);
+		ShowDiscardTop(deck->GetCurrentCard());
 		LOG_EMPTY_LN();
 		LOG_EMPTY_LN();
 		WHITE_COLOUR_LOG(LOG_LN, "The opponent finished their turn.");
@@ -403,6 +389,7 @@ void RenderText::OpponentTurnRender(bool secondPhase)
 
 void RenderText::ShowResult(bool hasWon)
 {
+	CLEAR_CONSOLE;
 	if (hasWon)
 	{
 		LOG_EMPTY_LN();
