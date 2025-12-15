@@ -21,6 +21,5 @@ public:
 private:
 
 	RenderText* _renderer;
-	// Functions to choose which card to put down
 };
 
