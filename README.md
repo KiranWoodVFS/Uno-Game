@@ -10,9 +10,11 @@ This project is to create an arcade game using Unity. We created an uno game usi
 
 ## Who worked on this project:
 
-**Tobias Arrieta** - UI
+**Tobias Arrieta** [@VelikiyKnyaz]
+- UI
 
-**Kiran Wood** - Gameplay
+**Kiran Wood** [@kiranwood]
+- Gameplay
 
 ## Project Link
 
